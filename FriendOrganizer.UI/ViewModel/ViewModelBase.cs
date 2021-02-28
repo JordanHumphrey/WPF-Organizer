@@ -9,8 +9,9 @@ namespace FriendOrganizer.UI.ViewModel
 
         /// <summary>
         /// Helper function to raise event where selected item happens or changes,
-        /// and pass the name of the property. CallerMemberName grabs the name of
-        /// the property so we dont have to pass it manually.
+        /// and pass the name of the property and update it in the View. 
+        /// CallerMemberName grabs the name of the property so we dont have to 
+        /// pass it manually.
         /// Since we want to use this method from subclasses, its protected,
         /// and we may want to override it so we make it virtual.
         /// </summary>

@@ -32,11 +32,11 @@ namespace FriendOrganizer.UI.Data
         /// can load the data.
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Friend>> GetAllAsync()
+        public async Task<Friend> GetByIdAsync(int friendId)
         {
             using (var ctx = new FriendOrganizerDbContext())
             {
-                return await ctx.Friends.AsNoTracking().ToListAsync();
+                return await ctx.Friends.AsNoTracking().SingleAsync(f => f.Id==friendId);
                 //await Task.Delay(5000); Testing UI control
                 //return friends;
             }

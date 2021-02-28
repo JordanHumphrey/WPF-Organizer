@@ -19,6 +19,12 @@ namespace FriendOrganizer.UI.Startup
 
             builder.RegisterType<MainViewModel>().AsSelf();
             builder.RegisterType<MainWindow>().AsSelf();
+            builder.RegisterType<NavigationViewModel>().As<INavigationViewModel>();
+            builder.RegisterType<FriendDetailViewModel>().As<IFriendDetailViewModel>();
+            // AsImplementedInterfaces() will implement all LookupDataService
+            // interfaces we have created, rather than us registering every type
+            // manually since we will have multiple Lookup types.
+            builder.RegisterType<LookupDataService>().AsImplementedInterfaces();
             // When an IFriendDataService is requested, it will make an instance
             // of the FriendDataService class.
             builder.RegisterType<FriendDataService>().As<IFriendDataService>();
