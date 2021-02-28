@@ -8,6 +8,12 @@ using System.Threading.Tasks;
 
 namespace FriendOrganizer.UI.Data
 {
+    /// <summary>
+    /// Used in the NavigationViewModel to load friends 
+    /// only with and Id and a Name. The full friends should
+    /// be loaded by the FriendDetailViewModel that uses the 
+    /// FriendDataService.
+    /// </summary>
     public class LookupDataService : IFriendLookupDataService
     {
         private Func<FriendOrganizerDbContext> _contextCreator;
