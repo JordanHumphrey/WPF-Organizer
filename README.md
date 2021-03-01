@@ -26,13 +26,13 @@ WPF Application that uses Entity Framework, Prism Event Aggregator, UI, Model an
    - [x] Save Friend with Entity Framework
    - [x] Update Navigation view after save
    - [x] Add Navigation View Item
-7. [] Validate User Input
-8. [] Detecting Model Changes
-9. [] Adding and Deleting Entities
-10. [] Lookups
-11. [] Object Graphs
-12. [] Support Other Detail Views
-13. [] Tabbed UI
-14. [] Detail View for Collections
-15. [] Implement Optimistic Concurrency
-16. [] Final Styling of UI
+7. [ ] Validate User Input
+8. [ ] Detecting Model Changes
+9. [ ] Adding and Deleting Entities
+10. [ ] Lookups
+11. [ ] Object Graphs
+12. [ ] Support Other Detail Views
+13. [ ] Tabbed UI
+14. [ ] Detail View for Collections
+15. [ ] Implement Optimistic Concurrency
+16. [ ] Final Styling of UI
