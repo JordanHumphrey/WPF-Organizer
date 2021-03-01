@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace FriendOrganizer.UI.ViewModel
 {
+    /// <summary>
+    /// Responsible for handling all loading and changing
+    /// of Friend Details in FriendDetailView.
+    /// Uses FriendDataService and EventAggregator
+    /// to listen for OpenFriendDetailView events
+    /// and update the DetailView with selected item.
+    /// </summary>
     public class FriendDetailViewModel : ViewModelBase, IFriendDetailViewModel
     {
         private IFriendDataService _dataService;
