@@ -41,5 +41,21 @@ namespace FriendOrganizer.UI.Data
                 //return friends;
             }
         }
+
+        /// <summary>
+        /// Calls the Func<FriendOrganizerDbContext> to get the Db context, 
+        /// and attaches the friend to the context so it is aware of this instance.
+        /// </summary>
+        /// <param name="friend"></param>
+        /// <returns></returns>
+        public async Task SaveAsync(Friend friend)
+        {
+            using (var ctx = _contextCreator())
+            {
+                ctx.Friends.Attach(friend);
+                ctx.Entry(friend).State = EntityState.Modified;
+                await ctx.SaveChangesAsync();
+            }
+        }
     }
 }

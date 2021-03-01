@@ -1,9 +1,11 @@
 ﻿using FriendOrganizer.Model;
 using FriendOrganizer.UI.Data;
 using FriendOrganizer.UI.Event;
+using Prism.Commands;
 using Prism.Events;
 using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace FriendOrganizer.UI.ViewModel
 {
@@ -26,6 +28,30 @@ namespace FriendOrganizer.UI.ViewModel
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<OpenFriendDetailViewEvent>()
                 .Subscribe(OnOpenFriendDetailView);
+
+            SaveCommand = new DelegateCommand(OnSaveExecute, OnSaveCanExecute);
+        }
+
+        /// <summary>
+        /// Publishes an event when save is clicked to notify
+        /// the NavigationViewModel that we need to update 
+        /// the list of friends.
+        /// </summary>
+        private async void OnSaveExecute()
+        {
+            await _dataService.SaveAsync(Friend);
+            _eventAggregator.GetEvent<AfterFriendSavedEvent>().Publish(
+                new AfterFriendSavedEventArgs
+                {
+                    Id = Friend.Id,
+                    DisplayMember = $"{Friend.FirstName} {Friend.LastName}"
+                });
+        }
+
+        private bool OnSaveCanExecute()
+        {
+            // TODO: check if friend is valid
+            return true;
         }
 
         private async void OnOpenFriendDetailView(int friendId)
@@ -49,5 +75,8 @@ namespace FriendOrganizer.UI.ViewModel
                 OnPropertyChanged();
             }
         }
+
+        // Save Command for button on FriendDetail View
+        public ICommand SaveCommand { get; }
     }
 }
